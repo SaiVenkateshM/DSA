@@ -13,9 +13,10 @@ public class Day16 {
         int answer = isValidBST(A);
         System.out.println(answer);
 
-        int[] arrays = {1, 2, 3, 5, 10};
+        int[] arrays = {1, 2, 3,4, 5, 8,10};
 
         TreeNode answer1 = createBBST(arrays);
+        print(answer1);
     }
 
     public static int isValidBST(TreeNode A){
@@ -55,6 +56,17 @@ public class Day16 {
         root.right = balancedBST(A,mid+1,end);
 
         return root;
+    }
+
+    public static void print(TreeNode A){
+        TreeNode current = A;
+        if(current == null)
+            return;
+        print(current.left);
+
+        print(current.right);
+        System.out.print(current.val + "-");//post order
+
     }
 }
 
