@@ -3,6 +3,7 @@ package com.dsa.practice.everyday;
 
 /*
 1. Search in BST
+2. Delete a node in BST when there is 0 child node and 1 child node.
 
  */
 public class Day17 {
