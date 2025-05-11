@@ -49,23 +49,17 @@ public class Day34 {
     public static int subarrayLeastAverage(ArrayList<Integer> A, int B){
         int n = A.size();
         int ans=0;
-        ArrayList<Integer> prefixSum = new ArrayList<>(n);
-        prefixSum.add(0,A.get(0));
-        for(int i=1;i<n;i++){
-            prefixSum.add(i,prefixSum.get(i-1)+ A.get(i));
+        int sum =0;
+        for(int i=0;i<B;i++){
+            sum += A.get(i);
         }
-        int leastAverage = prefixSum.get(B-1)/B;
-         int start=1;
-         int end =B;
-        //int leastAverage= Integer.MAX_VALUE;
-         while(end<n){
-             int currentAverage= (prefixSum.get(end)- prefixSum.get(start-1))/B;
-             if( currentAverage < leastAverage){
-                 leastAverage = currentAverage;
-                 ans = start;
+        int minsum = sum;
+         for(int i=B;i<n;i++){
+             sum += (A.get(i) - A.get(i-B));
+             if(sum < minsum){
+                 minsum = sum;
+                 ans = (i-B+1);
              }
-             start++;
-             end++;
          }
 
         return ans;
