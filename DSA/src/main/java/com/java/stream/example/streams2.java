@@ -11,6 +11,7 @@ public class streams2 {
         fourth();
         fifth();
         sixth();
+        seventh();
 
     }
     public static void first(){
@@ -45,6 +46,12 @@ public class streams2 {
         List<People> p = Arrays.asList(new People(59,"appa"),new People(58,"amma"),new People(34,"akka"),new People(23,"aishu"),new People(28,"vicku"));
         Map<Integer, List<People>> collect = p.stream().collect(Collectors.groupingBy(People::getAge));
         collect.forEach((k,v)-> System.out.println(k + " "+ v));
+    }
+    public static void seventh(){// numbers starting with 1
+        List<Integer> numbers = Arrays.asList(100,200,101,202,110,305,140,500);
+        //List<String> collect = numbers.stream().map(a -> String.valueOf(a)).filter(n -> n.startsWith("1")).collect(Collectors.toList());
+        List<Integer> collect = numbers.stream().filter(n -> String.valueOf(n).startsWith("1")).collect(Collectors.toList());
+        System.out.println(collect);
     }
 
 }
