@@ -1,12 +1,15 @@
 package com.dsa.practice.everyday;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /*
 1. Climbing Stairs
 2. fibonacci series.
 3. Minimum Number of Squares
+4. Max Product Subarray - knapsack
  */
 public class Day10 {
     public static void main(String[] args) {
@@ -19,6 +22,10 @@ public class Day10 {
         int A = 6;
         int answerSquare = countMinSquare(A);
         System.out.println(answerSquare);
+
+        ArrayList<Integer> B = new ArrayList<>(Arrays.asList(4, 2, -5, 1));
+        int maxProduct = maxProductMethod(B);
+        System.out.println(maxProduct);
     }
 
     public static int climbStairs(int A){
@@ -75,6 +82,28 @@ public class Day10 {
         }
         dp[A] = result +1;
         return dp[A];
+    }
+
+    public static int maxProductMethod(List<Integer> A){
+       int n= A.size();
+       int minProd = A.get(0);
+       int maxProd = A.get(0);
+       int result = A.get(0);
+
+       for(int i=1;i<n;i++){
+           int current = A.get(i);
+
+           if(current <0){
+               int temp = maxProd;
+               maxProd = minProd;
+               minProd = temp;
+           }
+           maxProd = Math.max(current,current * maxProd);
+           minProd = Math.min(current,current * minProd);
+
+           result = Math.max(result,maxProd);
+       }
+       return result;
     }
 
 }
