@@ -12,8 +12,8 @@ public class Day25 {
         String A = "23";
         ArrayList<String> ans = letterCombinations(A);
         System.out.println(ans);
-        int B = 3;
-        int C = 0;
+        int B = 4;
+        int C = 4;
         int answer = kSymbol(B,C);
         System.out.println(answer);
     }
